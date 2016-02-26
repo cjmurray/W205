@@ -1,16 +1,17 @@
 #!/bin/bash
 
-# $DATA_DIR = "~/github/W205/Ex1/data"
+# Step 0: download and unzip Hospital_Revised_Flatfiles.zip from https://data.medicare.gov
+
 ORIG_DIR="orig/" 
 
+# rename files to friendlier names
 mv "Hospital General Information.csv" hospitals.csv 
 mv "Timely and Effective Care - Hospital.csv" effective_care.csv 
 mv "Readmissions and Deaths - Hospital.csv" readmissions.csv
 mv "Measure Dates.csv" measures.csv
 mv "hvbp_hcahps_05_28_2015.csv" surveys_responses.csv
 
-rm "Hospital.pdf"
-
+# rename other files
 # rename only works on first match, so do 10 times
 for i in `seq 1 10`; do
 	# remove dashes from filenames
