@@ -1,20 +1,22 @@
-There are 23 hospitals with a base score of 80 and consistency score of 20,
-but we want to know the top 10.  
+Ideally we would calculate the best hospitals from the effective_care table,
+but I can not figure out how to get MapReduce to work in PySpark. So we will 
+just look at surveys_and responses instead.
 
-#TODO: Figure out another way to rate the hospitals
+There are 23 hospitals with a base score of 80 and consistency score of 20,
+but we want to know the top 10.  We should figure out some other criteria
 as a tie-breaker.
 
 
-ProviderNumber HCAHPSBaseScore HCAHPSConsistencyScore HospName 
---------------------------------------------------------------
-040152  80      20      PHYSICIANS' SPECIALTY HOSPITAL                          
-100313	80	20	SACRED HEART HOSPITAL ON THE GULF
-190261	80	20	OUACHITA COMMUNITY HOSPITAL
-190267	80	20	FAIRWAY MEDICAL CENTER
-190241	80	20	PHYSICIANS MEDICAL CENTER
-190259	80	20	LAFAYETTE SURGICAL SPECIALTY HOSPITAL
-110200	80	20	NORTHSIDE MEDICAL CENTER
-170190	80	20	MANHATTAN SURGICAL HOSPITAL LLC
-180149	80	20	WESTLAKE REGIONAL HOSPITAL
-010045	80	20	FAYETTE MEDICAL CENTER
+Score   Consist ProvId  HospName 
+------- ------- ------- --------------------------------------
+80      20      040152  PHYSICIANS' SPECIALTY HOSPITAL                          
+80	20	100313	SACRED HEART HOSPITAL ON THE GULF
+80	20	190261	OUACHITA COMMUNITY HOSPITAL
+80	20	190267	FAIRWAY MEDICAL CENTER
+80	20	190241	PHYSICIANS MEDICAL CENTER
+80	20	190259	LAFAYETTE SURGICAL SPECIALTY HOSPITAL
+80	20	110200	NORTHSIDE MEDICAL CENTER
+80	20	170190	MANHATTAN SURGICAL HOSPITAL LLC
+80	20	180149	WESTLAKE REGIONAL HOSPITAL
+80	20	010045	FAYETTE MEDICAL CENTER
 
