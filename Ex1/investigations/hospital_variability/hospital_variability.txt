@@ -1,0 +1,15 @@
+So, if I could figure out how to do MapReduce in Pyspark, here is what I would
+do.  Using the effective_care table:
+
+1) Calculate the average score for each procedure-hospital pair
+	Map:    (ProcedureID_ProviderID, Score)
+	Reduce: (ProcedureID_ProviderID, AvgScore)
+
+2) Calculate the standard deviation for each procedure
+	Map:    (ProcedureID, Score)
+	Reduce: (ProcedureID, StdDeviation)
+
+3) Sort the procedures by descending standard deviation
+
+4) Print out the top 10 procedures and their standard deviations
+

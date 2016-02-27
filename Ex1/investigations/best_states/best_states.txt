@@ -1,0 +1,18 @@
+So, if I could figure out how to do MapReduce in Pyspark, here is what I would
+do.  Using the effective_care table:
+
+1) Count the number of procedures in each state
+	Map:    (State,1)
+	Reduce: (State,TotalProcedures)
+
+2) Calculate the sum of the scores for each procedure
+	Map:    (State,Score)
+	Reduce: (State,TotalScore)
+
+3) For each state, calculate the average score:
+	AvgScore = TotalScore / TotalProcedures
+
+4) Sort the states by descending average score
+
+5) Print out the top 10 states and their scores
+

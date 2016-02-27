@@ -1,0 +1,2 @@
+Compare calculated scores from effective_care to the HCAHPSBaseScore in
+surveys_and_responses.
