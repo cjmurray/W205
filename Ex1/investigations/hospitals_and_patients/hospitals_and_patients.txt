@@ -1,2 +1,39 @@
-Compare calculated scores from effective_care to the HCAHPSBaseScore in
-surveys_and_responses.
+We create a new table, hospital_scores, that contains our calculated average
+scores for each hospital.  We join that with the surveys_responses table to
+compare avgScore and HCAHPSBaseScore.  Ideally we would then run a Pearson
+correlation test to see if average scores are correlated with patient survey
+responses.
+
+As a quick test, we run our query twice to see the top-10 and bottom-10
+hospitals and their corresponding survey results.  We can easily see that
+survey scores are generally lower for the lower-scoring hosptials.  We 
+conclude that YES, average score are correlated with patient survey responses.
+
+
+Top-10 scores:
+
+420102  99.5    78                                                              
+450875	99.5	80
+030107	99.0	67
+170183	99.0	59
+340049	99.0	78
+340148	98.7	61
+360351	98.3	42
+460049	98.0	52
+390322	97.7	70
+280127	97.3	73
+
+
+Bottom 10 scores:
+
+100314  33.7    58                                                              
+340144	39.6	12
+050586	44.5	13
+140275	45.5	25
+490048	45.9	8
+190081	46.3	51
+190190	46.8	54
+450192	46.9	31
+050434	46.9	38
+450144	47.4	17
+
