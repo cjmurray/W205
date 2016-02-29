@@ -1,22 +1,21 @@
-Ideally we would calculate the best hospitals from the effective_care table,
-but I can not figure out how to get MapReduce to work in PySpark. So we will 
-just look at surveys_and responses instead.
+We calculate the best hospitals based on the average score for procedures from
+the Effective_Care table.  Many scores are on a 100-point scale, however some
+scores are in the thousands, some appear to be on a 5-point scale, and others
+are text values.  To simplify our calculation, we ignore any scores over 100
+or less than 1.
 
-There are 23 hospitals with a base score of 80 and consistency score of 20,
-but we want to know the top 10.  We should figure out some other criteria
-as a tie-breaker.
+Based on these criteria, the 10 best hospitals are as follows:
 
-
-Score   Consist ProvId  HospName 
-------- ------- ------- --------------------------------------
-80      20      040152  PHYSICIANS' SPECIALTY HOSPITAL                          
-80	20	100313	SACRED HEART HOSPITAL ON THE GULF
-80	20	190261	OUACHITA COMMUNITY HOSPITAL
-80	20	190267	FAIRWAY MEDICAL CENTER
-80	20	190241	PHYSICIANS MEDICAL CENTER
-80	20	190259	LAFAYETTE SURGICAL SPECIALTY HOSPITAL
-80	20	110200	NORTHSIDE MEDICAL CENTER
-80	20	170190	MANHATTAN SURGICAL HOSPITAL LLC
-80	20	180149	WESTLAKE REGIONAL HOSPITAL
-80	20	010045	FAYETTE MEDICAL CENTER
+Score   ProviderID 	HospitalName
+-----   ----------      ------------
+100.0   210058  	UNIV OF MD REHABILITATION &  ORTHOPAEDIC INSTITUTE              
+100.0	490144		NOVANT HEALTH HAYMARKET MEDICAL CENTER
+99.5	05114F		VA SAN DIEGO HEALTHCARE SYSTEM
+99.5	420102		GHS PATEWOOD MEMORIAL HOSPITAL
+99.5	450875		QUAIL CREEK SURGICAL HOSPITAL
+99.0	340049		NORTH CAROLINA SPECIALTY HOSPITAL
+99.0	501311		EAST ADAMS RURAL HOSPITAL
+99.0	400011		HOSPITAL ORIENTE
+99.0	030107		ARIZONA SPINE AND JOINT HOSPITAL
+99.0	170183		KANSAS SURGERY & RECOVERY CENTER
 
