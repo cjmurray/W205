@@ -1,18 +1,21 @@
-So, if I could figure out how to do MapReduce in Pyspark, here is what I would
-do.  Using the effective_care table:
+We calculate the best states based on the average score for procedures from
+the Effective_Care table.  Many scores are on a 100-point scale, however some
+scores are in the thousands, some appear to be on a 5-point scale, and others
+are text values.  To simplify our calculation, we ignore any scores over 100
+or less than 1.
 
-1) Count the number of procedures in each state
-	Map:    (State,1)
-	Reduce: (State,TotalProcedures)
+Based on these criteria, the 10 best states (and territories) are as follows:
 
-2) Calculate the sum of the scores for each procedure
-	Map:    (State,Score)
-	Reduce: (State,TotalScore)
+76.58823529411765       GU                                                      
+72.37037037037037	VI
+58.976190476190474	DE
+58.792682926829265	PR
+56.36923076923077	DC
+55.68421052631579	AK
+55.074074074074076	VT
+54.4390243902439	HI
+53.811764705882354	ID
+53.80821917808219	RI
 
-3) For each state, calculate the average score:
-	AvgScore = TotalScore / TotalProcedures
-
-4) Sort the states by descending average score
-
-5) Print out the top 10 states and their scores
-
+It appears that the law of small numbers may have an effect, as many of the
+results are some of the least populated states and territories.
