@@ -1,15 +1,22 @@
-So, if I could figure out how to do MapReduce in Pyspark, here is what I would
-do.  Using the effective_care table:
+To determine which procedures have the greatest variability between hospitals,
+we calculate the standard deviation of score from the Effective_Care table for
+each procedure.  Many scores are on a 100-point scale, however some
+scores are in the thousands, some appear to be on a 5-point scale, and others
+are text values.  To simplify our calculation, we ignore any scores over 100
+or less than 1.
 
-1) Calculate the average score for each procedure-hospital pair
-	Map:    (ProcedureID_ProviderID, Score)
-	Reduce: (ProcedureID_ProviderID, AvgScore)
+Based on these criteria, the 10 best hospitals are as follows:
 
-2) Calculate the standard deviation for each procedure
-	Map:    (ProcedureID, Score)
-	Reduce: (ProcedureID, StdDeviation)
-
-3) Sort the procedures by descending standard deviation
-
-4) Print out the top 10 procedures and their standard deviations
+StdDev	MeasureID		MeasureName
+------- ----------------------- ---------------------------------------------
+49.5    IMM_2   		Immunization for influenza                                      
+49.5	ED_2b			ED2
+47.5	OP_5			Median Time to ECG
+47.5	OP_4			Aspirin at Arrival
+42.27	OP_22			Left before being seen
+42.27	IMM_3_FAC_ADHPCT	Healthcare workers given influenza vaccination
+42.27	OP_4			Aspirin at Arrival
+42.27	READM_30_HOSP_WIDE	No different than the National Rate
+42.27	OP_5			Median Time to ECG
+42.20	OP_4			Aspirin at Arrival
 
