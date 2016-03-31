@@ -9,6 +9,9 @@ from Twittercredentials import *
 from time import time,ctime
 import simplejson
 
+import urllib3
+urllib3.disable_warnings()
+
 class StdOutListener(StreamListener):
    
     def __init__(self,timer):
@@ -30,7 +33,7 @@ class StdOutListener(StreamListener):
                 self.dataJson =simplejson.loads(data[:-1])
                 self.dataJsonText = self.dataJson["text"].lower()
                 self.count += 1
-                if "Hello" in self.dataJsonText:
+                if "hello" in self.dataJsonText.lower():
                     print self.dataJsonText
 
             else:

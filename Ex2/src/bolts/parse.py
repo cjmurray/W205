@@ -35,10 +35,8 @@ class ParseTweet(Bolt):
             # Filter out the urls
             if word.startswith("http"): continue
 
-            # Strip leading and lagging punctuations
-            # aword = word.strip("\"?><,'.:;)")
-            # aword = word.translate(None, string.punctuation)
-            aword = re.sub("[^a-zA-Z]", '', word)
+            # strip anything that is not alphanumeric
+            aword = re.sub("[^a-zA-Z0-9]", '', word)
 
             # now check if the word contains only ascii
             if len(aword) > 0 and ascii_string(word):
