@@ -1,6 +1,8 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
-import re
+import re 
+import string
+
 from streamparse.bolt import Bolt
 
 ################################################################################
@@ -34,7 +36,9 @@ class ParseTweet(Bolt):
             if word.startswith("http"): continue
 
             # Strip leading and lagging punctuations
-            aword = word.strip("\"?><,'.:;)")
+            # aword = word.strip("\"?><,'.:;)")
+            # aword = word.translate(None, string.punctuation)
+            aword = re.sub("[^a-zA-Z]", '', word)
 
             # now check if the word contains only ascii
             if len(aword) > 0 and ascii_string(word):
