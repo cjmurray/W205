@@ -2,12 +2,26 @@
 
 ### Instructions:
 
-	# psql -d Tcount -U postgres -f init.sql
+First, change directory to the Ex2 root directory:
 
-	# streamparse run
+     # cd W205/Ex2/
 
-	# python finalresults.py
+Initialize the database:
 
-	# python finalresults.py hello
+     # psql -d Tcount -U postgres -f init.sql
 
-	# python histogram.py 25,35
+Run the application:
+
+     # streamparse run
+
+View total wordcount results:
+
+     # python finalresults.py
+
+View individual wordcount results:
+
+     # python finalresults.py hello
+
+Print the words that appear between k1 and k2 times:
+
+     # python histogram.py 25,35
